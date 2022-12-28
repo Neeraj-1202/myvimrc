@@ -41,9 +41,13 @@ endfunction
 set clipboard=unnamedplus
 set number
 colorscheme molokai
+"colorscheme borland
 "colorscheme PaperColor
+"colorscheme apprentice
+"colorscheme nibble 
+"colorscheme alabaster 
 set t_Co=256
-set background=dark
+set background=light
 set autoindent
 set ts=2
 set sw=2
@@ -52,17 +56,19 @@ syntax enable
 filetype on
 filetype indent on
 set guifont=Fira_Code:h14:qDRAFT
+"set guifont=Perfect DOS VGA 437 Win
 "=========================================================
 " my cpp settings
 "=========================================================
 cd N:\cpp\
-autocmd BufNewFile *.cc r C:\tools\vim\skeleton\cc.cc
-autocmd filetype cpp nnoremap <F6> :w <bar> !g++ -ulimit -Wall -Wno-unused-result -std=c++17   -O2   % -o %:r && %:r <CR>
 
 "map <C-b>!g++ -g % -o %:r <CR>
 "map <C-n>!g++ -g % -o %:r && %:r <CR>
 map <C-a> gg V G
 map <C-c> "+y
+map <C-v> "+p
+autocmd BufNewFile *.cc 0r N:\cpp\temp\CC.cc | 5
+autocmd filetype cpp nnoremap <F9> :w <bar>!cls && g++ -std=c++14 -O2 -Wall % -o %:r && %:r.exe <CR>
 " vim-plug
 call plug#begin()
 Plug 'github.com/907th/vim-auto-save'
@@ -71,6 +77,8 @@ Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 "let g:auto_save = 1
 "let g:auto_save_events = ["InsertLeave", "TextChanged"]
-autocmd TextChanged,TextChangedI * silent write
+
+
+
 
 
